@@ -4,7 +4,7 @@ require './current_conditions'
 require './sun'
 require './alerts'
 require './ten_day'
-#require 'hurricanes'
+require './hurricanes'
 
 
 class Client
@@ -39,10 +39,10 @@ class Client
     TenDay.parse(data)
   end
 
-  # def hurricanes
-  #   data = self.class.get("/api/#{API_KEY}/currenthurricane/view.json")
-  #   Hurricanes.parse(data)
-  # end
+  def hurricanes
+    data = self.class.get("/api/#{API_KEY}/currenthurricane/view.json")
+    Hurricanes.parse(data)
+  end
 
   def get(path)
     self.class.get("/api/#{API_KEY}/#{path}/q/#{@zipcode}.json")
