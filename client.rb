@@ -1,4 +1,11 @@
 require 'httparty'
+require 'json'
+require './current_conditions'
+require './sun'
+require './alerts'
+require './ten_day'
+#require 'hurricanes'
+
 
 class Client
 
@@ -9,9 +16,9 @@ class Client
   base_uri "api.wunderground.com"
 
   def initialize(zipcode)
-    @zipcode = 37205
+    @zipcode = zipcode
   end
-                                      # Need "http://" ?
+
   def current_conditions
     data = self.get('conditions')
     CurrentConditions.parse(data)
@@ -32,16 +39,13 @@ class Client
     TenDay.parse(data)
   end
 
-  def hurricanes
-    data = self.class.get("/api/#{API_KEY}/currenthurricane/view.json")
-    Hurricanes.parse(data)
-  end
-
-
-
+  # def hurricanes
+  #   data = self.class.get("/api/#{API_KEY}/currenthurricane/view.json")
+  #   Hurricanes.parse(data)
+  # end
 
   def get(path)
-    self.class.get("/api/#{API_KEY}/#{path}/q/#{zipcode}.json")
+    self.class.get("/api/#{API_KEY}/#{path}/q/#{@zipcode}.json")
   end
 
 end
