@@ -34,10 +34,10 @@ class Client
     Alerts.parse(data)
   end
 
-  def ten_day
-    data = self.get('forecast10day')
-    TenDay.parse(data)
-  end
+  # def ten_day
+  #   data = self.get('forecast10day')
+  #   TenDay.parse(data)
+  # end
 
   def hurricanes
     data = self.class.get("/api/#{API_KEY}/currenthurricane/view.json")

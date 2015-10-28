@@ -5,11 +5,11 @@ class Alerts
 
   def self.parse(data)
     obj = Alerts.new
-    if data['alerts']
-      obj.alerts = data['alerts']
-    else
+    # if !data['alerts'][0]
+    #   obj.alerts = data['alerts']['0']
+    # else
       obj.alerts = "There are no alerts for your area."
-    end
+    #end
     obj
   end
 
