@@ -1,3 +1,6 @@
+source "https://rubygems.org"
 
---color
---require spec_helper
+gem 'httparty'
+gem 'colorize'
+
+gem 'rspec'
