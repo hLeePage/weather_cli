@@ -1,5 +1,3 @@
-# A sample Gemfile
-source "https://rubygems.org"
 
-# gem "rails"
-require 'rspec'
+--color
+--require spec_helper
